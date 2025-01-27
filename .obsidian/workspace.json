@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "path:",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,8 +73,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -164,11 +163,13 @@
   },
   "active": "db82beb465986068",
   "lastOpenFiles": [
-    "Computer Science/Basic Data Structures and Algorithms/Arrays and Ram/RAM.md",
-    "Spatial Locality.md",
+    "().md",
     "Computer Science/Basic Data Structures and Algorithms/Arrays and Ram/Arrays.md",
-    "2025-01-26.md",
+    "Computer Science/Basic Data Structures and Algorithms/Arrays and Ram/RAM.md",
+    "Pasted image 20250126203245.png",
     "Home.md",
+    "Spatial Locality.md",
+    "2025-01-26.md",
     "Daily Notes"
   ]
 }

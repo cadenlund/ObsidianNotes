@@ -1,7 +1,9 @@
+#data-structures
+#Computer-Science
 ## Arrays
 #### Definition 
 * Always contiguous in system memory and are allocated by the OS. 
-* The most simple data structure and they look the exact same in the memory. 
+* The most simple data structure and they look the exact same in the [[RAM]]
 * We can configure how many bytes each value in the array is able to store. 
 * Can be accessed using indexing
 * O(1) time complexity on accessing values
@@ -95,6 +97,32 @@ Index | Address          | Time (nanoseconds)
  8    | 0000006201F8E510 | 4100 ns
  9    | 0000006201F8E514 | 4000 ns
 (int) 0
+Index | Address          | Time (nanoseconds)
+---------------------------------------------
+ 0    | 0000000EDF18E2C0 | 0 ns
+ 1    | 0000000EDF18E2C4 | 25600 ns
+ 2    | 0000000EDF18E2C8 | 4500 ns
+ 3    | 0000000EDF18E2CC | 3900 ns
+ 4    | 0000000EDF18E2D0 | 4000 ns
+ 5    | 0000000EDF18E2D4 | 3800 ns
+ 6    | 0000000EDF18E2D8 | 3900 ns
+ 7    | 0000000EDF18E2DC | 4000 ns
+ 8    | 0000000EDF18E2E0 | 3800 ns
+ 9    | 0000000EDF18E2E4 | 3900 ns
+(int) 0
+Index | Address          | Time (nanoseconds)
+---------------------------------------------
+ 0    | 000000A7E118E4B0 | 100 ns
+ 1    | 000000A7E118E4B4 | 28700 ns
+ 2    | 000000A7E118E4B8 | 5700 ns
+ 3    | 000000A7E118E4BC | 5000 ns
+ 4    | 000000A7E118E4C0 | 5000 ns
+ 5    | 000000A7E118E4C4 | 5000 ns
+ 6    | 000000A7E118E4C8 | 4800 ns
+ 7    | 000000A7E118E4CC | 4900 ns
+ 8    | 000000A7E118E4D0 | 4800 ns
+ 9    | 000000A7E118E4D4 | 4900 ns
+(int) 0
 0
 ```
 
@@ -181,14 +209,26 @@ Average Time per Access: 10 ns
 	* Called vector in C++
 	* Usually in C++ each index address value lies in the heap because the stack does not allow dynamic  allocation. However, the actual metadata containing the information about the size and location of the index elements can be on the stack but it will point to the heap. 
 	* This can be beneficial because static arrays on the stack have a better chance of being grabbed on a cache line -> [[Spatial Locality]]
-	
+	* Dynamic arrays are de-facto in js and python
+	* Don't have to specify the size
+	* Even though you would say that the time complexity of insertion or pushing a value to the end of an array is O(n), the [[Amortized Complexity]] is 0(1) because if we double the array size in memory every time we run out of physical size, we will rarely need to call this and re allocate the array into a new one which takes O(n). Rarely need to resize for a push. Amortized Complexity is the average time 
+	* In practice the function runs in 0(1) time due to power series. 
+	![[Pasted image 20250126203245.png]]
+	* As we double, time it takes to make the large array is completely dominated by the last term because its always going to be greater than or equal to the sum of all the previous terms. 
+	* we would say it takes O(2n). 2 because each time we have to allocate space and move the value to the new space. But we never care about constants in big O notation so the time it takes is O(n)
+	* Its almost as fast as a static array but  obviously there is constants in play. 
+
+
+
+
+
 ```cpp
 #include <iostream>
 #include <vector>
 #include <chrono> // For timing
 
 int main() {
-    const int SIZE = 1000000; // Size of the array and vector
+    const int SIZE = 10; // Size of the array and vector
 
     // Measure initialization time for static array
     auto startStatic = std::chrono::high_resolution_clock::now();
@@ -207,16 +247,16 @@ int main() {
     auto endDynamic = std::chrono::high_resolution_clock::now();
 
     // Calculate time taken
-    auto staticTime = std::chrono::duration_cast<std::chrono::microseconds>(endStatic - startStatic).count();
-    auto dynamicTime = std::chrono::duration_cast<std::chrono::microseconds>(endDynamic - startDynamic).count();
+    auto staticTime = std::chrono::duration_cast<std::chrono::nanoseconds>(endStatic - startStatic).count();
+    auto dynamicTime = std::chrono::duration_cast<std::chrono::nanoseconds>(endDynamic - startDynamic).count();
 
     // Print results
     std::cout << "Initialization Time:\n";
-    std::cout << "Static Array: " << staticTime << " microseconds\n";
-    std::cout << "Dynamic Vector: " << dynamicTime << " microseconds\n";
+    std::cout << "Static Array: " << staticTime << " nanoseconds\n";
+    std::cout << "Dynamic Vector: " << dynamicTime << " nanoseconds\n";
 
     // Highlight the difference
-    std::cout << "\nDifference: " << dynamicTime - staticTime << " microseconds\n";
+    std::cout << "\nDifference: " << dynamicTime - staticTime << " nanoseconds\n";
 
     return 0;
 }
@@ -230,7 +270,25 @@ Static Array: 1652 microseconds
 Dynamic Vector: 2849 microseconds
 
 Difference: 1197 microseconds
+(int) Initialization Time:
+Static Array: 0 microseconds
+Dynamic Vector: 1 microseconds
+
+Difference: 1 microseconds
 (int) 0
+Initialization Time:
+Static Array: 100 nanoseconds
+Dynamic Vector: 1600 nanoseconds
+
+Difference: 1500 nanoseconds
+(int) 0
+Initialization Time:
+Static Array: 200 nanoseconds
+Dynamic Vector: 1700 nanoseconds
+
+Difference: 1500 nanoseconds
+(int) 0
+0
 ```
 
 ####  Dynamic array methods
@@ -246,7 +304,21 @@ Difference: 1197 microseconds
 * Deletion - O(1) | O(n)
 	* At the end it is constant time because the element can be removed directly without having to shift the rest of the values
 	* In the middle is 0(n) because all the elements need to be shifted to fill the deletion in the array
-#### 
 
+#### associated leet code problem
+* Key takeaways Static arrays
+	* Removing elements in an array in a iterating fashion does not require a dynamic array method on ever iteration. 
+	* Instead we can loop through and if our condition is not! met (ie; detected a number that we need to remove), we use a second pointer to add it to the array. This second pointer only increments when the condition is not met meaning that the numbers we want to remove are skipped and eventually overridden leaving us with extra space at the end of the array with left over numbers. We return the logical size of the array so that it can be reshaped or interpreted after the fact; 
+	* By trying to only use static arrays and avoid storing variables in the heap, we can significantly reduce the time to run. 
+	* The CPU prefetcher and Cache line will grab the code and store it in cache making the computation blazingly fast. 
 
+ [Remove Duplicates from an array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+
+[Remove Element](https://leetcode.com/problems/remove-element/description/ )
+
+* Key takeaways Dynamic Arrays
+	* Dynamic arrays run very fast if implemented correctly. 
+	* The get Concatenation leet code was very easy.  
+	* All it took was two create an answer array, size does not have to be declared and make two for loops pushing back each element of nums onto the answer array. Do that twice and its solved 
+[Get Concatenation](https://leetcode.com/problems/concatenation-of-array/)
 
