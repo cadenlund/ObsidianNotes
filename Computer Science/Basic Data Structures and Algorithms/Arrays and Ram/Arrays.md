@@ -295,6 +295,7 @@ Difference: 1500 nanoseconds
 * Accessing elements - O(1) - also known as reading
 	* Can be accessed with the formula 
 	* Address = Base Address + (index * Element Size)
+	* element size is going to be the number of bits per element in the array and if we multiply the index, we get the distance in bits from the base address, like the head of the array, to the index position we want to access.
 * Searching - O(n)
 	* Linear search is O(n)
 	* Binary Search is O(log(n))
