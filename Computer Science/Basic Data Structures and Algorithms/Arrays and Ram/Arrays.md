@@ -123,6 +123,19 @@ Index | Address          | Time (nanoseconds)
  8    | 000000A7E118E4D0 | 4800 ns
  9    | 000000A7E118E4D4 | 4900 ns
 (int) 0
+Index | Address          | Time (nanoseconds)
+---------------------------------------------
+ 0    | 000000797118E380 | 0 ns
+ 1    | 000000797118E384 | 26300 ns
+ 2    | 000000797118E388 | 4600 ns
+ 3    | 000000797118E38C | 4000 ns
+ 4    | 000000797118E390 | 4000 ns
+ 5    | 000000797118E394 | 3900 ns
+ 6    | 000000797118E398 | 3900 ns
+ 7    | 000000797118E39C | 3900 ns
+ 8    | 000000797118E3A0 | 3900 ns
+ 9    | 000000797118E3A4 | 3900 ns
+(int) 0
 0
 ```
 
@@ -287,6 +300,12 @@ Static Array: 200 nanoseconds
 Dynamic Vector: 1700 nanoseconds
 
 Difference: 1500 nanoseconds
+(int) 0
+Initialization Time:
+Static Array: 100 nanoseconds
+Dynamic Vector: 1700 nanoseconds
+
+Difference: 1600 nanoseconds
 (int) 0
 0
 ```
