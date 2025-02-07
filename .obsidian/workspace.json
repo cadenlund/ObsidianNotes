@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Computer Science/Basic Data Structures and Algorithms/stack/Stack.md",
-                "mode": "preview",
+                "file": "Computer Science/Basic Data Structures and Algorithms/recursion/Factorial.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Stack"
+              "title": "Factorial"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Computer Science/Basic Data Structures and Algorithms/stack/Stack.md",
+                "file": "Computer Science/Basic Data Structures and Algorithms/recursion/Factorial.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Stack"
+              "title": "Backlinks for Factorial"
             }
           },
           {
@@ -164,6 +164,11 @@
   },
   "active": "c9ccf73da49d330a",
   "lastOpenFiles": [
+    "Computer Science/Basic Data Structures and Algorithms/Linked lists/queues.md",
+    "Computer Science/Basic Data Structures and Algorithms/recursion/Factorial.md",
+    "Computer Science/Basic Data Structures and Algorithms/recursion",
+    "Computer Science/Basic Data Structures and Algorithms/stack/Untitled.md",
+    "Computer Science/Basic Data Structures and Algorithms/Linked lists/Doubly Linked Lists.md",
     "Computer Science/Basic Data Structures and Algorithms/Linked lists/Singly linked list.md",
     "Computer Science/Basic Data Structures and Algorithms/stack/Stack.md",
     "Computer Science/Basic Data Structures and Algorithms/Linked lists",
